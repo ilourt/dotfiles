@@ -5,8 +5,10 @@ SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 echo $REPO_DIR/nvim
 
+# ln -ns , the n is immportant to not overwrite the existing files
+
 # Install nvim config
-ln -s "$REPO_DIR/nvim" $HOME/.config/nvim
+ln -ns "$REPO_DIR/nvim" $HOME/.config/nvim
 
 # Install wezterm config
-ln -s "$REPO_DIR/wezterm" $HOME/.config/wezterm
+ln -ns "$REPO_DIR/wezterm" $HOME/.config/wezterm
