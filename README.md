@@ -4,7 +4,7 @@ Contains the different config files for my PDE (Personnal development environmen
 
 ## Getting started
 
-1. `./scripts/install
+1. `./scripts/install`
 
 ## Nvim
 
