@@ -12,3 +12,7 @@ My neovim configuration
 
 ## Wezterm 
 My terminal configuration with wezterm
+
+## Tmux
+
+Install plugin manager: `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
