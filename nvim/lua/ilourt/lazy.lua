@@ -10,7 +10,7 @@ require("lazy").setup({
     end,
   },
   {
-     "ThePrimeagen/harpoon",
+    "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" }
   },
@@ -24,7 +24,8 @@ require("lazy").setup({
   },
 
   "folke/which-key.nvim",
-  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+  { 'nvim-treesitter/nvim-treesitter',            build = ':TSUpdate' },
+  { 'nvim-treesitter/nvim-treesitter-textobjects' },
   {
     'numToStr/Comment.nvim',
     opts = {

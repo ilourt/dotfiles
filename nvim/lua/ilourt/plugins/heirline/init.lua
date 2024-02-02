@@ -419,7 +419,7 @@ local Git = {
     end,
     on_click = {
       callback = function()
-          vim.cmd.LazyGit()
+        vim.cmd.LazyGit()
       end,
       name = 'heirline_gitbranch',
     },
@@ -768,13 +768,18 @@ local StatusLines = {
 
 local WinBars = {
   fallthrough = false,
+  -- try to hide winbar in floating windows
+  -- condition = function()
+  --   return vim.fn.pumvisible() == 0
+  --   -- return conditions.buffer_matches({ buftype = { " " } })
+  -- end,
   { -- A special winbar for terminals
     condition = function()
       return conditions.buffer_matches({ buftype = { "terminal" } })
     end,
     utils.surround({ "", "" }, colors.red, {
       {
-        hl = { fg = colors.dark , force = true },
+        hl = { fg = colors.dark, force = true },
         FileType,
         Space,
         TerminalName,
@@ -793,5 +798,6 @@ local WinBars = {
 
 require('heirline').setup {
   statusline = StatusLines,
-  winbar = WinBars,
+  winbar = nil,
+  -- winbar = WinBars,
 }
