@@ -1,5 +1,5 @@
 local wezterm = require 'wezterm';
-local act = require 'wezterm.action';
+local act = wezterm.action;
 local config = {}
 
 config.color_scheme = 'Catppuccin Mocha'
@@ -37,7 +37,7 @@ config.keys = {
     key = 'l',
     mods = 'CMD',
     action = act.PaneSelect {
-      alphabet = 'qsdfwxcv',
+      -- alphabet = 'qsdfwxcv',
     },
   },
   {
