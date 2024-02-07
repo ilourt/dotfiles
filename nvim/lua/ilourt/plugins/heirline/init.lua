@@ -5,7 +5,7 @@ local has_icon = true
 
 local palette = require('catppuccin.palettes').get_palette()
 local colors = {
-  bg = palette.base,
+  bg = palette.surface0,
   fg = palette.text,
   red = palette.red,
   green = palette.green,
