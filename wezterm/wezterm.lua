@@ -2,10 +2,14 @@ local wezterm = require 'wezterm';
 local act = wezterm.action;
 local config = {}
 
-config.color_scheme = 'Catppuccin Mocha'
+config.color_scheme = 'catppuccin-mocha'
+-- config.color_scheme = 'Catppuccin Mocha'
 config.window_background_opacity = 0.95
 config.font = wezterm.font "Hack Nerd Font"
 config.font_size = 13.0
+config.colors = {
+  cursor_fg = "h11111b",
+}
 
 -- Make righ toption act as altgr on mac
 config.send_composed_key_when_left_alt_is_pressed = true
