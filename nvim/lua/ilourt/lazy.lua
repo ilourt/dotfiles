@@ -132,16 +132,25 @@ require("lazy").setup({
     "zbirenbaum/copilot.lua",
     config = function()
       require("copilot").setup({
-        suggestion = { enabled = false },
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          keymap = {
+            accept = "<C-j>",
+            next = "<C-l>",
+            previous = "<C-k>",
+          }
+        },
         panel = { enabled = false },
       })
     end
   },
 
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end
-  }
+  -- Disable for now
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   config = function()
+  --     require("copilot_cmp").setup()
+  --   end
+  -- }
 })
