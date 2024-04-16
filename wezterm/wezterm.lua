@@ -8,7 +8,7 @@ config.window_background_opacity = 0.95
 config.font = wezterm.font "Hack Nerd Font"
 config.font_size = 13.0
 config.colors = {
-  cursor_fg = "h11111b",
+  cursor_fg = "#11111b",
 }
 
 -- Make righ toption act as altgr on mac

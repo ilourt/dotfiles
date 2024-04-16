@@ -1,38 +1,14 @@
 require("lazy").setup({
-  {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
-    dependencies = {
-      "nvim-lua/plenary.nvim"
-    },
-    config = function()
-      require("ilourt.plugins.telescope")
-    end,
-  },
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" }
-  },
-  {
-    "catppuccin/nvim",
-    as = "catppuccin",
-    config = function()
-      require("ilourt.plugins.catppuccin")()
-      -- vim.cmd("colorscheme catppuccin")
-    end
-  },
+  { import = "ilourt.plugins" },
 
   "folke/which-key.nvim",
   { 'nvim-treesitter/nvim-treesitter',            build = ':TSUpdate' },
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   {
     'numToStr/Comment.nvim',
-    opts = {
-      -- add any options here
-    },
     lazy = false,
   },
+  { 'JoosepAlviste/nvim-ts-context-commentstring' },
 
   { 'mbbill/undotree' },
 
@@ -110,6 +86,12 @@ require("lazy").setup({
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("trouble").setup {
+--
+        -- use_diagnostic_signs = true,
+      }
+    end,
   },
 
   {
@@ -123,7 +105,7 @@ require("lazy").setup({
       }
     },
     config = function()
-      require("ilourt.plugins.heirline")
+      require("ilourt.plugins-setup.heirline")
     end,
   },
 
