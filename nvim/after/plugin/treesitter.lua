@@ -1,6 +1,6 @@
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "javascript", "typescript", "lua", "vim", "vimdoc", "query", "eex" },
+  ensure_installed = { "javascript", "typescript", "lua", "vim", "vimdoc", "query", "eex", "just" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -49,7 +49,7 @@ require'nvim-treesitter.configs'.setup {
       -- mapping query_strings to modes.
       selection_modes = {
         ['@parameter.outer'] = 'v', -- charwise
-        ['@function.outer'] = 'V', -- linewise
+        ['@function.outer'] = 'V',  -- linewise
         ['@class.outer'] = '<c-v>', -- blockwise
       },
       -- If you set this to `true` (default is `false`) then any textobject is
