@@ -6,3 +6,6 @@ fish_add_path "/opt/homebrew/bin/"
 
 # Configure zoxide (an improvement over cd)
 zoxide init --cmd s fish | source
+
+# Configure fzf
+fzf --fish | source

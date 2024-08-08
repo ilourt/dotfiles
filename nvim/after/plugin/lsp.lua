@@ -32,6 +32,8 @@ lsp_zero.format_on_save({
     timeout_ms = 10000,
   },
   servers = {
+    ['prettier'] = { 'javascript', 'typescript', 'json', 'css', 'scss', 'html', 'yaml' },
+    ['lua_format'] = { 'lua' },
     ['tsserver'] = { 'javascript', 'typescript' },
     ['lexical'] = { 'elixir' },
     ['lua_ls'] = { 'lua' },
@@ -39,7 +41,25 @@ lsp_zero.format_on_save({
   }
 })
 
-require('mason').setup({})
+require('mason').setup({
+  formatters = {
+    prettier = {
+      command = 'prettier',
+      args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
+      rootPatterns = {
+        '.prettierrc',
+        '.prettierrc.json',
+        '.prettierrc.toml',
+        '.prettierrc.json',
+        '.prettierrc.yml',
+        '.prettierrc.yaml',
+        '.prettierrc.js',
+        'package.json',
+        'prettier.config.js',
+      },
+    },
+  },
+})
 require('mason-lspconfig').setup({
   ensure_installed = {
     'tsserver',
@@ -60,8 +80,12 @@ require('mason-lspconfig').setup({
       }
       require('lspconfig').pylsp.setup(pylsp_opts)
     end,
+
   }
 })
+
+-- Configure mason to use prettier for formatting
+
 
 local cmp = require('cmp')
 local cmp_format = lsp_zero.cmp_format()
@@ -70,6 +94,7 @@ cmp.setup({
   sources = {
     -- Copilot Source
     { name = 'nvim_lsp' },
+    { name = 'supermaven' },
     { name = "copilot" },
     { name = 'buffer' }
   },
