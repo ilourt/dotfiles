@@ -88,7 +88,7 @@ require("lazy").setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("trouble").setup {
---
+        --
         -- use_diagnostic_signs = true,
       }
     end,
@@ -128,11 +128,10 @@ require("lazy").setup({
     end
   },
 
-  -- Disable for now
-  -- {
-  --   "zbirenbaum/copilot-cmp",
-  --   config = function()
-  --     require("copilot_cmp").setup()
-  --   end
-  -- }
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end
+  }
 })

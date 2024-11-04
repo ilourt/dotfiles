@@ -34,7 +34,7 @@ lsp_zero.format_on_save({
   servers = {
     ['prettier'] = { 'javascript', 'typescript', 'json', 'css', 'scss', 'html', 'yaml' },
     ['lua_format'] = { 'lua' },
-    ['tsserver'] = { 'javascript', 'typescript' },
+    ['ts_ls'] = { 'javascript', 'typescript' },
     ['lexical'] = { 'elixir' },
     ['lua_ls'] = { 'lua' },
     ['pylsp'] = { 'python' },
@@ -62,7 +62,7 @@ require('mason').setup({
 })
 require('mason-lspconfig').setup({
   ensure_installed = {
-    'tsserver',
+    'ts_ls',
     'eslint',
     'lua_ls',
   },
@@ -94,7 +94,7 @@ cmp.setup({
   sources = {
     -- Copilot Source
     { name = 'nvim_lsp' },
-    { name = 'supermaven' },
+    -- { name = 'supermaven' },
     { name = "copilot" },
     { name = 'buffer' }
   },
