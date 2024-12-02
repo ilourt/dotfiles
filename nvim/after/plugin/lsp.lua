@@ -60,6 +60,9 @@ require('mason').setup({
     },
   },
 })
+
+local mason_registry = require('mason-registry')
+local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
 require('mason-lspconfig').setup({
   ensure_installed = {
     'ts_ls',
@@ -72,13 +75,26 @@ require('mason-lspconfig').setup({
       local lua_opts = lsp_zero.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
+    -- Configure ts ls to work with vue
+    ts_ls = function()
+      local ts_opts = {
+        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+        init_options = {
+          plugins = {
+            { name = "@vue/typescript-plugin", location = vue_language_server_path, languages = {"vue"} },
+          }
+        }
+      }
+      require('lspconfig').ts_ls.setup(ts_opts)
+    end,
     pylsp = function()
       local pylsp_opts = {
         plugins = {
           black = { enabled = true },
+          rope_autoimport = { enabled = true, completions = { enabled = true } },
         }
       }
-      require('lspconfig').pylsp.setup(pylsp_opts)
+      require('lspconfig').pylsp.setup({ pylsp = pylsp_opts })
     end,
 
   }
