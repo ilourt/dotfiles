@@ -20,7 +20,6 @@ local prompts = {
 return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
     dependencie = {
       { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
       { 'nvim-lua/plenary.nvim' },  -- for curl, log wrapper
@@ -57,9 +56,11 @@ return {
         end,
       }
 
-      chat.setup(opts)
       -- Setup the CMP integration
-      require("CopilotChat.integrations.cmp").setup()
+      opts.chat_autocomplete = true
+      -- require("CopilotChat.integrations.cmp").setup()
+
+      chat.setup(opts)
 
       vim.api.nvim_create_user_command("CopilotChatVisual", function(args)
         chat.ask(args.args, { selection = select.visual })
@@ -120,9 +121,14 @@ return {
         function()
           local input = vim.fn.input("Quick Chat: ")
           if input ~= "" then
-            vim.cmd("CopilotChatBuffer " .. input)
+            require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
           end
         end,
+        desc = "CopilotChat - Quick chat",
+      },
+      {
+        "<leader>ccv",
+        ":CopilotChatVisual<cr>",
         desc = "CopilotChat - Quick chat",
       },
       {

@@ -26,20 +26,20 @@ lsp_zero.set_sign_icons({
 })
 
 -- Manage format on save
-lsp_zero.format_on_save({
-  format_opts = {
-    async = false,
-    timeout_ms = 10000,
-  },
-  servers = {
-    ['prettier'] = { 'javascript', 'typescript', 'json', 'css', 'scss', 'html', 'yaml' },
-    ['lua_format'] = { 'lua' },
-    ['ts_ls'] = { 'javascript', 'typescript' },
-    ['lexical'] = { 'elixir' },
-    ['lua_ls'] = { 'lua' },
-    ['pylsp'] = { 'python' },
-  }
-})
+-- lsp_zero.format_on_save({
+--   format_opts = {
+--     async = false,
+--     timeout_ms = 10000,
+--   },
+--   servers = {
+--     ['prettier'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json', 'css', 'scss', 'html', 'yaml' },
+--     ['lua_format'] = { 'lua' },
+--     -- ['ts_ls'] = { 'javascript', 'typescript' },
+--     ['lexical'] = { 'elixir' },
+--     ['lua_ls'] = { 'lua' },
+--     ['pylsp'] = { 'python' },
+--   }
+-- })
 
 require('mason').setup({
   formatters = {
@@ -62,7 +62,8 @@ require('mason').setup({
 })
 
 local mason_registry = require('mason-registry')
-local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
+local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+    '/node_modules/@vue/language-server'
 require('mason-lspconfig').setup({
   ensure_installed = {
     'ts_ls',
@@ -81,7 +82,7 @@ require('mason-lspconfig').setup({
         filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
         init_options = {
           plugins = {
-            { name = "@vue/typescript-plugin", location = vue_language_server_path, languages = {"vue"} },
+            { name = "@vue/typescript-plugin", location = vue_language_server_path, languages = { "vue" } },
           }
         }
       }
