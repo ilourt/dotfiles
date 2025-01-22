@@ -45,16 +45,16 @@ return {
       opts.selection = select.unnamed
 
       -- Override the git prompts message
-      opts.prompts.Commit = {
-        prompt = "Write commit message for the change with commitizen convention",
-        selection = select.gitdiff,
-      }
-      opts.prompts.CommitStaged = {
-        prompt = "Write commit message for the change with commitizen convention",
-        selection = function(source)
-          return select.gitdiff(source, true)
-        end,
-      }
+      -- opts.prompts.Commit = {
+      --   prompt = "Write commit message for the change with commitizen convention",
+      --   selection = select.gitdiff,
+      -- }
+      -- opts.prompts.CommitStaged = {
+      --   prompt = "Write commit message for the change with commitizen convention",
+      --   selection = function(source)
+      --     return select.gitdiff(source, true)
+      --   end,
+      -- }
 
       -- Setup the CMP integration
       opts.chat_autocomplete = true

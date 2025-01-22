@@ -26,39 +26,40 @@ lsp_zero.set_sign_icons({
 })
 
 -- Manage format on save
--- lsp_zero.format_on_save({
---   format_opts = {
---     async = false,
---     timeout_ms = 10000,
---   },
---   servers = {
---     ['prettier'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json', 'css', 'scss', 'html', 'yaml' },
---     ['lua_format'] = { 'lua' },
---     -- ['ts_ls'] = { 'javascript', 'typescript' },
---     ['lexical'] = { 'elixir' },
---     ['lua_ls'] = { 'lua' },
---     ['pylsp'] = { 'python' },
---   }
--- })
+lsp_zero.format_on_save({
+  format_opts = {
+    async = false,
+    timeout_ms = 10000,
+  },
+  servers = {
+    ['lua_format'] = { 'lua' },
+    -- ['ts_ls'] = { 'javascript', 'typescript' },
+    ['biome'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'vue' },
+    ['efm'] = { 'lua', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'vue', 'json', 'yaml' },
+    ['lexical'] = { 'elixir' },
+    ['lua_ls'] = { 'lua' },
+    ['pylsp'] = { 'python' },
+  }
+})
 
 require('mason').setup({
-  formatters = {
-    prettier = {
-      command = 'prettier',
-      args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
-      rootPatterns = {
-        '.prettierrc',
-        '.prettierrc.json',
-        '.prettierrc.toml',
-        '.prettierrc.json',
-        '.prettierrc.yml',
-        '.prettierrc.yaml',
-        '.prettierrc.js',
-        'package.json',
-        'prettier.config.js',
-      },
-    },
-  },
+  -- formatters = {
+  --   prettier = {
+  --     command = 'prettier',
+  --     args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
+  --     rootPatterns = {
+  --       '.prettierrc',
+  --       '.prettierrc.json',
+  --       '.prettierrc.toml',
+  --       '.prettierrc.json',
+  --       '.prettierrc.yml',
+  --       '.prettierrc.yaml',
+  --       '.prettierrc.js',
+  --       'package.json',
+  --       'prettier.config.js',
+  --     },
+  --   },
+  -- },
 })
 
 local mason_registry = require('mason-registry')
@@ -67,7 +68,6 @@ local vue_language_server_path = mason_registry.get_package('vue-language-server
 require('mason-lspconfig').setup({
   ensure_installed = {
     'ts_ls',
-    'eslint',
     'lua_ls',
   },
   handlers = {
@@ -93,6 +93,9 @@ require('mason-lspconfig').setup({
         plugins = {
           black = { enabled = true },
           rope_autoimport = { enabled = true, completions = { enabled = true } },
+          -- pylsp_mypy = { enabled = true },
+          rope_rename = { enabled = true },
+
         }
       }
       require('lspconfig').pylsp.setup({ pylsp = pylsp_opts })

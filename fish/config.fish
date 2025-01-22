@@ -9,3 +9,6 @@ zoxide init --cmd s fish | source
 
 # Configure fzf
 fzf --fish | source
+
+# Update the path to include local/bin
+set -gx PATH $PATH $HOME/.local/bin

@@ -4,7 +4,7 @@ local config = {}
 
 config.color_scheme = 'catppuccin-mocha'
 -- config.color_scheme = 'Catppuccin Mocha'
-config.window_background_opacity = 0.95
+-- config.window_background_opacity = 0.95
 config.font = wezterm.font "Hack Nerd Font"
 config.font_size = 13.0
 config.colors = {
