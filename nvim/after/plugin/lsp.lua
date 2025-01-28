@@ -89,16 +89,25 @@ require('mason-lspconfig').setup({
       require('lspconfig').ts_ls.setup(ts_opts)
     end,
     pylsp = function()
+      local function extra_args()
+        local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX") or "/usr"
+        return { "--python-executable", virtual .. "/bin/python3", true }
+      end
       local pylsp_opts = {
         plugins = {
           black = { enabled = true },
           rope_autoimport = { enabled = true, completions = { enabled = true } },
-          -- pylsp_mypy = { enabled = true },
-          rope_rename = { enabled = true },
+          pylsp_mypy = {
+            enabled = true,
+            overrides = extra_args(),
+            report_progress = true,
+            live_mode = true,
+          },
+          -- rope_rename = { enabled = true },
 
         }
       }
-      require('lspconfig').pylsp.setup({ pylsp = pylsp_opts })
+      require('lspconfig').pylsp.setup({ settings = { pylsp = pylsp_opts } })
     end,
 
   }
