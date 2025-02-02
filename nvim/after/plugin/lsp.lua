@@ -109,6 +109,17 @@ require('mason-lspconfig').setup({
       }
       require('lspconfig').pylsp.setup({ settings = { pylsp = pylsp_opts } })
     end,
+    tailwindcss = function()
+      require('lspconfig').tailwindcss.setup({
+        init_options = {
+          userLanguages = {
+            elixir = "html-eex",
+            eelixir = "html-eex",
+            heex = "html-eex",
+          },
+        },
+      })
+    end
 
   }
 })
