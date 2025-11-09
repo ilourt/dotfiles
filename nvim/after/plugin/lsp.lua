@@ -35,8 +35,9 @@ lsp_zero.format_on_save({
     ['lua_format'] = { 'lua' },
     -- ['ts_ls'] = { 'javascript', 'typescript' },
     ['biome'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'vue' },
-    ['efm'] = { 'lua', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'vue', 'json', 'yaml' },
+    -- ['efm'] = { 'lua', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'vue', 'json', 'yaml' },
     ['lexical'] = { 'elixir' },
+    ['elixirls'] = { 'elixir' },
     ['lua_ls'] = { 'lua' },
     ['pylsp'] = { 'python' },
   }
@@ -63,8 +64,8 @@ require('mason').setup({
 })
 
 local mason_registry = require('mason-registry')
-local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
-    '/node_modules/@vue/language-server'
+-- local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+--     '/node_modules/@vue/language-server'
 require('mason-lspconfig').setup({
   ensure_installed = {
     'ts_ls',

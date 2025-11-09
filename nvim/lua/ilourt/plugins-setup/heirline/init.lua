@@ -279,7 +279,7 @@ local LSPActive = {
   init = function(self)
     self.clients = {}
     self.sources = {}
-    for _, client in ipairs(vim.lsp.get_active_clients { bufnr = 0 }) do
+    for _, client in ipairs(vim.lsp.get_clients { bufnr = 0 }) do
       if client.name ~= 'null-ls' then
         self.clients[#self.clients + 1] = client.name
       else -- null-ls sources
