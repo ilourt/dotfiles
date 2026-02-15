@@ -1,0 +1,202 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  // UI settings
+  "helix_mode": false,
+  "git_panel": {
+    "tree_view": true
+  },
+  "agent_servers": {
+    "codex": {
+      "default_mode": "auto"
+    }
+  },
+  "indent_guides": {
+    "background_coloring": "disabled",
+    "coloring": "indent_aware"
+  },
+  "show_signature_help_after_edits": true,
+  "sticky_scroll": {
+    "enabled": true
+  },
+  "colorize_brackets": true,
+  "icon_theme": "Material Icon Theme",
+  // AI Assistant settings
+  "agent": {
+    "profiles": {
+      "test": {
+        "name": "test",
+        "tools": {},
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      }
+    },
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5.1-codex"
+    },
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5.2-codex"
+    },
+    "model_parameters": []
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+  // Editor settings
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "never"
+  },
+  "ui_font_size": 14,
+  "buffer_font_size": 12,
+  "soft_wrap": "editor_width",
+  "vertical_scroll_margin": 20,
+  "relative_line_numbers": "enabled",
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Frappé",
+    "dark": "Catppuccin Mocha"
+  },
+  // Language settings
+  "languages": {
+    "JavaScript": {
+      "language_servers": [
+        "biome"
+        // "typescript-language-server",
+      ],
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      }
+    },
+    "TypeScript": {
+      "language_servers": [
+        "biome",
+        "typescript-language-server"
+      ],
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      }
+    },
+    "CSS": {
+      "language_servers": [
+        "biome"
+      ]
+    },
+    "Vue.js": {
+      "language_servers": [
+        "vue-language-server",
+        "biome",
+        "tailwindcss-language-server"
+      ],
+      "format_on_save": "on",
+      "formatter": [
+        // {
+        //   "language_server": {
+        //     "name": "vue-language-server"
+        //   }
+        // },
+        // {
+        //   "language_server": {
+        //     "name": "biome"
+        //   }
+        // }
+      ]
+    },
+    "Astro": {
+      "language_servers": [
+        "astro-language-server",
+        "biome",
+        "tailwindcss-language-server"
+      ]
+    },
+    "Python": {
+      "language_servers": [
+        "basedpyright",
+        "ruff"
+      ],
+      "formatter": {
+        "language_server": {
+          "name": "ruff"
+        }
+      }
+    },
+    "Go": {
+      "language_servers": [
+        "gopls"
+      ]
+    },
+    "Elixir": {
+      "language_servers": [
+        "!lexical",
+        "expert"
+      ]
+    },
+    "HEEX": {
+      "language_servers": [
+        "!lexical",
+        "expert"
+      ]
+    },
+    "YAML": {
+      "tab_size": 2
+    }
+  },
+  "lsp": {
+    "expert": {
+      "binary": {
+        "arguments": [
+          "--stdio"
+        ]
+      }
+    },
+    "vue-language-server": {
+      "settings": {
+        "format": {
+          "template": true
+        }
+      }
+    }
+  },
+  // // "language_servers": ["!eslint"],
+  "format_on_save": "on",
+  "formatter": "language_server",
+  "context_servers": {
+    "grepai": {
+      "env": {},
+      "enabled": true,
+      "remote": false,
+      "command": "grepai",
+      "args": [
+        "mcp-serve"
+      ]
+    },
+    "code-context": {
+      "enabled": false,
+      "command": "npx",
+      "args": [
+        "@zilliz/claude-context-mcp@latest"
+      ],
+      "env": {
+        "EMBEDDING_PROVIDER": "OpenAI",
+        "EMBEDDING_MODEL": "text-embedding-nomic-embed-text-v2-moe",
+        "OPENAI_API_KEY": "local",
+        "OPENAI_BASE_URL": "http://127.0.0.1:1234/v1/",
+        "MILVUS_ADDRESS": "127.0.0.1:19530",
+        "MILVUS_TOKEN": "local"
+      }
+    }
+  }
+}
