@@ -8,6 +8,9 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // UI settings
+  "auto_update_extensions": {
+    "biome": false
+  },
   "icon_theme": "Material Icon Theme",
   // AI Assistant settings
   "agent": {
@@ -72,7 +75,12 @@
       "language_servers": [
         "typescript-language-server",
         "biome"
-      ]
+      ],
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      }
     },
     "TypeScript": {
       "language_servers": [
@@ -99,19 +107,20 @@
     //     "tailwindcss-language-server"
     //   ]
     // },
-    "Vue.js": {
-      "language_servers": [
-        "vue-language-server",
-        "typescript-language-server",
-        "biome",
-        "tailwindcss-language-server"
-      ],
-      "formatter": {
-        "language_server": {
-          "name": "biome"
-        }
-      }
-    },
+    // "Vue.js": {
+    //   "language_servers": [
+    //     "vue-language-server",
+    //     "biome",
+    //     "typescript-language-server",
+    //     "tailwindcss-language-server"
+    //   ],
+    //   "format_on_save": "on",
+    //   "formatter": {
+    //     "language_server": {
+    //       "name": "biome"
+    //     }
+    //   }
+    // },
     "Astro": {
       "language_servers": [
         "astro-language-server",
