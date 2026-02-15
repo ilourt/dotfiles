@@ -17,3 +17,4 @@ set -gx PATH $PATH $HOME/.local/bin
 set -gx PATH $PATH /Users/irwin/.cache/lm-studio/bin
 # End of LM Studio CLI section
 
+starship init fish | source
