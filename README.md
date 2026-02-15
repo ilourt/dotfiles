@@ -6,6 +6,16 @@ Contains the different config files for my PDE (Personnal development environmen
 
 1. `./scripts/install`
 
+## Dotfile manager
+
+Use `scripts/dotman.py` to adopt, link, and audit config symlinks.
+
+- Dry run old-layout migration: `./scripts/dotman.py migrate-layout --dry-run`
+- Run migration: `./scripts/dotman.py migrate-layout`
+- Adopt local config into repo: `./scripts/dotman.py adopt opencode --dry-run`
+- Create and link new config dir: `./scripts/dotman.py create starlink`
+- Audit symlink health: `./scripts/dotman.py doctor`
+
 ## Nvim
 
 My neovim configuration

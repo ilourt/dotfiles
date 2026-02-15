@@ -1,2 +1,7 @@
 tmux/plugins/
 zed/conversations/
+scripts/__pycache__/
+*.pyc
+zed/debug.json
+zed/**/*.mdb
+zed/*_backup.json
