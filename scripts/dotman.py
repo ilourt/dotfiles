@@ -560,9 +560,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Color output mode (default: auto)",
     )
 
-    parser = argparse.ArgumentParser(
-        description="Manage dotfiles symlinks", parents=[common]
-    )
+    parser = argparse.ArgumentParser(description="Manage dotfiles symlinks")
 
     sub = parser.add_subparsers(dest="command", required=True)
 

@@ -9,6 +9,7 @@ Contains the different config files for my PDE (Personnal development environmen
 ## Dotfile manager
 
 Use `scripts/dotman.py` to adopt, link, and audit config symlinks.
+Pass options after the subcommand (for example: `adopt <name> --dry-run`).
 
 - Dry run old-layout migration: `./scripts/dotman.py migrate-layout --dry-run`
 - Run migration: `./scripts/dotman.py migrate-layout`
