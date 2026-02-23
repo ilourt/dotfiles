@@ -8,6 +8,9 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // UI settings
+  "edit_predictions": {
+    "provider": "copilot"
+  },
   "helix_mode": false,
   "git_panel": {
     "tree_view": true
@@ -47,9 +50,6 @@
       "model": "gpt-5.2-codex"
     },
     "model_parameters": []
-  },
-  "features": {
-    "edit_prediction_provider": "copilot"
   },
   // Editor settings
   "vim_mode": true,
