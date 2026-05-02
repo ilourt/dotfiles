@@ -110,28 +110,28 @@ require("lazy").setup({
   },
 
   -- copilot
-  {
-    "zbirenbaum/copilot.lua",
-    config = function()
-      require("copilot").setup({
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-          keymap = {
-            accept = "<C-j>",
-            next = "<C-l>",
-            previous = "<C-k>",
-          }
-        },
-        panel = { enabled = false },
-      })
-    end
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   config = function()
+  --     require("copilot").setup({
+  --       suggestion = {
+  --         enabled = true,
+  --         auto_trigger = true,
+  --         keymap = {
+  --           accept = "<C-j>",
+  --           next = "<C-l>",
+  --           previous = "<C-k>",
+  --         }
+  --       },
+  --       panel = { enabled = false },
+  --     })
+  --   end
+  -- },
 
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end
-  }
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   config = function()
+  --     require("copilot_cmp").setup()
+  --   end
+  -- }
 })
