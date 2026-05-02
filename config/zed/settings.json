@@ -8,14 +8,35 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // UI settings
+  "cli_default_open_behavior": "new_window",
+  "project_panel": {
+    "dock": "right"
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
   "edit_predictions": {
     "provider": "copilot"
   },
   "helix_mode": false,
   "git_panel": {
+    "dock": "right",
     "tree_view": true
   },
   "agent_servers": {
+    "opencode": {
+      "type": "registry"
+    },
+    "opencodeacp": {
+      "type": "custom",
+      "command": "opencode",
+      "args": [
+        "acp"
+      ]
+    },
     "codex": {
       "default_mode": "auto"
     }
@@ -32,6 +53,7 @@
   "icon_theme": "Material Icon Theme",
   // AI Assistant settings
   "agent": {
+    "dock": "left",
     "profiles": {
       "test": {
         "name": "test",
@@ -70,8 +92,8 @@
   "languages": {
     "JavaScript": {
       "language_servers": [
-        "biome"
-        // "typescript-language-server",
+        "biome",
+        "typescript-language-server"
       ],
       "formatter": {
         "language_server": {
