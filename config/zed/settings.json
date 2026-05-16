@@ -8,9 +8,10 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // UI settings
+  "disable_ai": false,
   "cli_default_open_behavior": "new_window",
   "project_panel": {
-    "dock": "right"
+    "dock": "left"
   },
   "outline_panel": {
     "dock": "right"
@@ -19,11 +20,11 @@
     "dock": "right"
   },
   "edit_predictions": {
-    "provider": "copilot"
+    "provider": "zed"
   },
   "helix_mode": false,
   "git_panel": {
-    "dock": "right",
+    "dock": "left",
     "tree_view": true
   },
   "agent_servers": {
@@ -37,9 +38,6 @@
         "acp"
       ]
     },
-    "codex": {
-      "default_mode": "auto"
-    }
   },
   "indent_guides": {
     "background_coloring": "disabled",
@@ -53,7 +51,8 @@
   "icon_theme": "Material Icon Theme",
   // AI Assistant settings
   "agent": {
-    "dock": "left",
+    "sidebar_side": "right",
+    "dock": "right",
     "profiles": {
       "test": {
         "name": "test",
@@ -68,8 +67,8 @@
     },
     "default_profile": "ask",
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-5.2-codex"
+      "provider": "lmstudio",
+      "model": "mistralai/devstral-small-2-2512"
     },
     "model_parameters": []
   },
@@ -117,26 +116,15 @@
         "biome"
       ]
     },
-    "Vue.js": {
-      "language_servers": [
-        "vue-language-server",
-        "biome",
-        "tailwindcss-language-server"
-      ],
-      "format_on_save": "on",
-      "formatter": [
-        // {
-        //   "language_server": {
-        //     "name": "vue-language-server"
-        //   }
-        // },
-        // {
-        //   "language_server": {
-        //     "name": "biome"
-        //   }
-        // }
-      ]
-    },
+    // "Vue.js": {
+    //   "language_servers": [
+    //     "vue-language-server",
+    //     "vtsls",
+    //     "typescript-language-server",
+    //     "biome",
+    //     "tailwindcss-language-server"
+    //   ]
+    // },
     "Astro": {
       "language_servers": [
         "astro-language-server",
@@ -166,7 +154,7 @@
         "expert"
       ]
     },
-    "HEEX": {
+    "HEEx": {
       "language_servers": [
         "!lexical",
         "expert"
