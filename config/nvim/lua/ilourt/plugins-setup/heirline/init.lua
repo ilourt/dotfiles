@@ -84,19 +84,6 @@ local FileIcon = {
   end,
 }
 
-local FileTag = {
-  -- provider = function()
-  --   -- return require('grapple').key() == nil and ' 󰨙' or ' 󰔡'
-  --   return require('grapple').key() == nil and ' [tag:off] ' or ' [tag:on] '
-  -- end,
-  on_click = {
-    callback = function()
-      require('grapple').toggle()
-    end,
-    name = 'heirline_filetag',
-  },
-}
-
 local FileName = {
   init = function(self)
     self.filename = vim.api.nvim_buf_get_name(0)
@@ -235,31 +222,6 @@ local ScrollBar = {
   update = { 'CursorMoved', 'CursorMovedI', 'ModeChanged' },
 }
 
-local NullLsInfo = {
-  condition = function(self)
-    return #self.sources > 0
-  end,
-  on_click = {
-    callback = function()
-      vim.schedule(function()
-        vim.cmd('NullLsInfo')
-      end)
-    end,
-    name = 'heirline_nulllsinfo',
-  },
-  flexible = true,
-
-  -- {
-  --   provider = function(self)
-  --     return string.format('N(%s) ', table.concat(self.sources, '|'))
-  --   end,
-  -- },
-  {
-    provider = function()
-      return 'null-ls '
-    end,
-  },
-}
 local LspInfo = {
   on_click = {
     callback = function()
@@ -278,20 +240,8 @@ local LSPActive = {
   update = { 'LspAttach', 'LspDetach' },
   init = function(self)
     self.clients = {}
-    self.sources = {}
     for _, client in ipairs(vim.lsp.get_clients { bufnr = 0 }) do
-      if client.name ~= 'null-ls' then
-        self.clients[#self.clients + 1] = client.name
-      else -- null-ls sources
-        local sources = {}
-        vim.tbl_map(function(source)
-          -- filter repeat source name
-          if not sources[source.name] then
-            sources[source.name] = source
-          end
-        end, require('null-ls.sources').get_available(vim.bo.filetype))
-        self.sources = vim.tbl_keys(sources)
-      end
+      self.clients[#self.clients + 1] = client.name
     end
   end,
   hl = { fg = 'green' },
@@ -307,7 +257,6 @@ local LSPActive = {
     },
     provider = has_icon and '[' or '[',
   },
-  NullLsInfo,
   LspInfo,
 }
 
@@ -517,38 +466,14 @@ local AlphaStatusline = {
   SquareMode,
 }
 
-local DrexInfo = {
-  condition = function()
-    return vim.bo.filetype == 'drex'
-  end,
-  -- drex current directory
-  {
-    provider = function()
-      return require('drex.utils').get_root_path(0)
-    end,
-    hl = { fg = 'blue' },
-  },
-  -- clipboard entries
-  {
-    init = function(self)
-      self.count = vim.tbl_count(require('drex.clipboard').clipboard)
-    end,
-    provider = function(self)
-      return '  ' .. self.count
-    end,
-    hl = { fg = 'red' },
-  },
-}
-
 local DirectoryInfo = {
   fallthrough = false,
-  DrexInfo,
   WorkDir,
 }
 
 local ExplorerStatusline = {
   condition = function()
-    return vim.tbl_contains({ 'neo-tree', 'drex' }, vim.bo.filetype)
+    return vim.tbl_contains({ 'NvimTree' }, vim.bo.filetype)
   end,
   {
     condition = function()
@@ -646,46 +571,6 @@ local TerminalStatusline = {
   SquareMode,
 }
 
-local LuapadStatusline = {
-  condition = function()
-    return conditions.buffer_matches {
-      bufname = { '.*%d_Luapad%.lua$' },
-    }
-  end,
-  SquareMode,
-  {
-    provider = '  ',
-    hl = function(self)
-      return { fg = self:get_mode_color() }
-    end,
-  },
-  {
-    provider = function()
-      local filename = vim.api.nvim_buf_get_name(0)
-      filename = vim.fn.fnamemodify(filename, ':t')
-      local nr = filename:gsub('_Luapad%.lua$', '')
-      return 'LUAPAD#' .. nr .. ' '
-    end,
-    hl = { fg = 'green' },
-  },
-  {
-    init = function(self)
-      self.status = require('luapad.statusline').status()
-    end,
-    provider = function(self)
-      return string.format('[%s]', self.status)
-    end,
-    hl = function(self)
-      return { fg = self.status == 'ok' and 'green' or 'red' }
-    end,
-  },
-  Align,
-  Ruler,
-  Space,
-  ScrollBar,
-}
-
-
 -- stylua: ignore
 local SpecialStatusline = {
   condition = function()
@@ -761,7 +646,6 @@ local StatusLines = {
   ExplorerStatusline,
   QuickfixStatusline,
   TerminalStatusline,
-  LuapadStatusline,
   SpecialStatusline,
   DefaultStatusline,
 }

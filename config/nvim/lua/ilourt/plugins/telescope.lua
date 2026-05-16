@@ -6,12 +6,21 @@ return {
     "nvim-telescope/telescope-live-grep-args.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
   },
-  config = function()
-    local telescope = require('telescope')
+  keys = function()
+    local builtin = require('telescope.builtin')
+    return {
+      { '<leader>ff', builtin.find_files, desc = 'Find files' },
+      { '<leader>fb', builtin.buffers, desc = 'Find buffers' },
+      { '<C-p>', builtin.git_files, desc = 'Find git files' },
+      { '<leader>fo', builtin.lsp_document_symbols, desc = 'Document symbols' },
+      { '<leader>ss', function() require('telescope').extensions.live_grep_args.live_grep_args() end, desc = 'Live grep args' },
+    }
+  end,
+  opts = function()
     local actions = require('telescope.actions')
     local lga_actions = require("telescope-live-grep-args.actions")
 
-    telescope.setup {
+    return {
       defaults = {
         mappings = {
           n = {
@@ -36,8 +45,12 @@ return {
         }
       }
     }
+  end,
+  config = function(_, opts)
+    local telescope = require('telescope')
 
-    -- load extensions
+    telescope.setup(opts)
+
     telescope.load_extension('live_grep_args')
     telescope.load_extension('ui-select')
   end,

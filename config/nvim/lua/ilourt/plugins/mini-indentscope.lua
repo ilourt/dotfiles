@@ -1,12 +1,12 @@
 return {
   'echasnovski/mini.indentscope',
   version = '*',
-  config = function()
+  opts = function()
     local indentscope = require('mini.indentscope')
-    indentscope.setup({
+    return {
       draw = {
         animation = indentscope.gen_animation.none()
       }
-    })
-  end
+    }
+  end,
 }
