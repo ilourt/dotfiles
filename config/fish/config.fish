@@ -13,6 +13,9 @@ fzf --fish | source
 # Update the path to include local/bin
 set -gx PATH $PATH $HOME/.local/bin
 
+# Set default editor
+set -gx EDITOR nvim
+
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/irwin/.cache/lm-studio/bin
 # End of LM Studio CLI section
